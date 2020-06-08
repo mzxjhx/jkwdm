@@ -1,0 +1,22 @@
+server:
+  port: 8081
+  
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wdmrayzer_irl?useUnicode=true&characterEncoding=utf-8&&useSSL=false
+    username: root
+    password: 123abc
+
+# 配置Mapper地址
+mybatis:
+  mapperLocations: classpath*:/mappers/**/*.xml
+
+# 配置log日志打印
+# https://www.jianshu.com/p/1fa12b92d5c4
+# https://www.cnblogs.com/bigdataZJ/p/springboot-log.html
+logging:
+  level:
+    com.jmwdm: DEBUG
+  pattern:
+    console: '%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n ' 
