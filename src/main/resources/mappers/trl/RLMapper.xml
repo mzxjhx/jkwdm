@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jmwdm.trl.dao.RlDao">
+	
+	
+	<select id="getList" resultType="com.jmwdm.trl.bean.Trl">
+		SELECT
+			batch_number AS 单号,
+			serial_number AS sn号,
+			primitive_sn AS 原始sn,
+			staff AS 工号,
+			`table` AS 工位,
+			DATE_FORMAT(
+				create_time,
+				'%Y-%m-%d %H:%i:%S'
+			)AS 时间,
+			`level` AS 等级,
+			t_1310,
+			t_1490,
+			t_1550
+		FROM
+			t_rl
+		WHERE
+			1 = 1
+		<if test="level != null and level != ''">
+			and `level`=#{level}
+		</if>
+		<if test="batchNumber != null and batchNumber != ''">
+			and batch_number=#{batchNumber}
+		</if>
+	</select>
+
+</mapper>   

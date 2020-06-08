@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.jmwdm.user.bean.User;
 
 @Service
-public interface UserService {
+public interface IUserService {
 
 	String getList(User bean);
 }

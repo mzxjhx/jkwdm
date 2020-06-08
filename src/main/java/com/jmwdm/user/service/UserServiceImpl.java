@@ -7,13 +7,16 @@ import net.sf.json.JSONObject;
 
 import com.jmwdm.user.bean.User;
 import com.jmwdm.user.dao.UserDao;
-
+/**
+ * 
+ * @author HP
+ *
+ */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements IUserService{
 
 	@Autowired
-	private UserDao userDao;
-	
+	private UserDao userDao;	
 	
 	public String getList(User bean) {
 		// TODO Auto-generated method stub
