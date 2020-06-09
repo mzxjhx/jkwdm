@@ -51,6 +51,11 @@
         	<groupId>mysql</groupId>
         	<artifactId>mysql-connector-java</artifactId>
     	</dependency>
+    	<dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 		<dependency>
 		    <groupId>net.sf.json-lib</groupId>
 		    <artifactId>json-lib</artifactId>
@@ -79,6 +84,17 @@
             <scope>test</scope>
         </dependency>
         <!--日志end-->
+        <!--解析excel-->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
         <plugins>

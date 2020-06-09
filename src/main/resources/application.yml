@@ -12,6 +12,13 @@ spring:
 mybatis:
   mapperLocations: classpath*:/mappers/**/*.xml
 
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
 # 配置log日志打印
 # https://www.jianshu.com/p/1fa12b92d5c4
 # https://www.cnblogs.com/bigdataZJ/p/springboot-log.html

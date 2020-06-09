@@ -6,13 +6,10 @@ import com.jmwdm.framework.BaseBean;
  * @author pc
  * @date 2020年6月7日
  */
-public class User extends BaseBean{
+public class User{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	public int id;
+	
 	public String loginName;
 	
 	public String passwd;
@@ -20,6 +17,15 @@ public class User extends BaseBean{
 	public int role;
 	
 	public String loginTime;
+
+		
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getLoginName() {
 		return loginName;

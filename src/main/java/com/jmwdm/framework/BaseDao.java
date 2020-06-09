@@ -19,4 +19,6 @@ public interface BaseDao<T> {
 	public List<T> getList(T bean);
 	
 	public T getBean(T bean);
+	
+	public List<T> getPage(T bean);
 }
