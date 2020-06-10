@@ -1,9 +1,9 @@
 package com.jmwdm.trl.dao;
 
-import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.jmwdm.framework.BaseDao;
 import com.jmwdm.trl.bean.Trl;
 
 /**
@@ -12,7 +12,6 @@ import com.jmwdm.trl.bean.Trl;
  * 
  */
 @Repository
-public interface RlDao {
+public interface RlDao extends BaseDao<Trl>{
 	
-	public List<Trl> getList(Trl bean);
 }

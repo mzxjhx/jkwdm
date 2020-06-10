@@ -1,4 +1,6 @@
 package com.jmwdm.framework;
+import java.util.List;
+
 import net.sf.json.JSONObject;
 public class JsonFormat {
     /**
@@ -45,6 +47,23 @@ public class JsonFormat {
         json.put("code",code);
         json.put("msg",msg);
         json.put("list",obj);
+        return json;
+    }
+    
+    /**
+     * 
+     * @param code
+     * @param msg
+     * @param total
+     * @param obj
+     * @return
+     */
+    public static JSONObject formatList(int code,String msg,long total, Object obj){
+        JSONObject json = new JSONObject();
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("list",obj);
+        json.put("totalCount", total);
         return json;
     }
 }

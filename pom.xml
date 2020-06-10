@@ -8,7 +8,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-
+	<properties>
+		<java.version>1.7</java.version>
+	</properties>
 	<!-- 指定Spring Boot的版本 2.0.4.RELEASE -->
 	<parent>
 	    <groupId>org.springframework.boot</groupId>
@@ -51,11 +53,23 @@
         	<groupId>mysql</groupId>
         	<artifactId>mysql-connector-java</artifactId>
     	</dependency>
-    	<dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.3</version>
-        </dependency>
+		<!--导入pagehelper相关依赖
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>5.1.2</version>
+		</dependency>
+		<dependency>
+		     <groupId>com.github.pagehelper</groupId>
+		     <artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
+		     <version>1.2.10</version>
+		</dependency>
+		-->
+		<dependency>
+		      <groupId>com.github.pagehelper</groupId>
+		      <artifactId>pagehelper-spring-boot-starter</artifactId>
+		      <version>1.2.10</version>
+		 </dependency>
 		<dependency>
 		    <groupId>net.sf.json-lib</groupId>
 		    <artifactId>json-lib</artifactId>
@@ -101,8 +115,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            </plugin>            
         </plugins>
+        <!-- 打包mapper资源文件 -->
         <resources>
             <resource>
                 <directory>src/main/java</directory>

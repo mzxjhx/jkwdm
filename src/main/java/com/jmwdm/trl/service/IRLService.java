@@ -1,5 +1,6 @@
 package com.jmwdm.trl.service;
 
+
 import org.springframework.stereotype.Service;
 
 import com.jmwdm.trl.bean.Trl;
@@ -12,4 +13,6 @@ import com.jmwdm.trl.bean.Trl;
 public interface IRLService {
 
 	String getList(Trl bean);
+	
+	String getJson(Trl bean);
 }

@@ -12,10 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jmwdm.framework.ExcelUtils;
 import com.jmwdm.framework.ExportExcelUtils;
+import com.jmwdm.framework.JsonFormat;
 import com.jmwdm.user.bean.User;
 import com.jmwdm.user.service.UserServiceImpl;
 /*
@@ -30,14 +32,35 @@ public class UserControl {
 	@Resource
 	private UserServiceImpl service;
 	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="getJson", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
-	public String getJson(HttpServletRequest request, HttpServletResponse response) {
+	public String getJson(HttpServletRequest request, 
+			HttpServletResponse response,
+			@RequestParam("pageNum") Integer pageNum, 
+			@RequestParam("pageSize") Integer pageSize) {
 		log.info("user/getJson");
+		if(pageNum == null || pageSize == null) {
+			return JsonFormat.formatList(100, "参数错误", 0, null).toString();
+		}
 		User bean = new User();
+		bean.setPageNum(pageNum);
+		bean.setPageSize(pageSize);
 		return service.getJson(bean);
 	}
 	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(value="exportExcel", method=RequestMethod.GET)
 	public void exportExcel(HttpServletRequest request, HttpServletResponse response) {
 		User bean = new User();

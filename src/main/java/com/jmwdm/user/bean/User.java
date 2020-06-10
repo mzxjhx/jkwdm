@@ -6,8 +6,13 @@ import com.jmwdm.framework.BaseBean;
  * @author pc
  * @date 2020年6月7日
  */
-public class User{
+public class User extends BaseBean{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public int id;
 	
 	public String loginName;

@@ -9,10 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jmwdm.framework.JsonFormat;
 import com.jmwdm.trl.bean.Trl;
 import com.jmwdm.trl.service.RLServiceImpl;
+import com.jmwdm.user.bean.User;
 
 /* 
  * @author
@@ -29,9 +32,17 @@ private static final Logger log = LoggerFactory.getLogger(RLControl.class);
 	
 	@ResponseBody
 	@RequestMapping(value="/getList", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
-	public String getList(HttpServletRequest request, HttpServletResponse response) {
+	public String getList(HttpServletRequest request, 
+			HttpServletResponse response,
+			@RequestParam("pageNum") Integer pageNum, 
+			@RequestParam("pageSize") Integer pageSize) {
 		log.info("rl/getList");
+		if(pageNum == null || pageSize == null) {
+			return JsonFormat.formatList(100, "参数错误", 0, null).toString();
+		}
 		Trl bean = new Trl();
-		return service.getList(bean);
+		bean.setPageNum(pageNum);
+		bean.setPageSize(pageSize);
+		return service.getJson(bean);
 	}
 }

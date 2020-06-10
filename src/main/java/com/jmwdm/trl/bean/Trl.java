@@ -16,12 +16,9 @@ public class Trl extends BaseBean{
 	private int id;	
 	private String serialNumber;	
 	private String primitiveSn;
-	
 	private String batchNumber;
-	
 	private String table;
-	private String createTime;
-	
+	private String createTime;	
 	private String staff;
 	String level;
 	private float T1310;
