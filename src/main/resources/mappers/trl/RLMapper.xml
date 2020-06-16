@@ -5,19 +5,19 @@
 	
 	<select id="getList" resultType="com.jmwdm.trl.bean.Trl">
 		SELECT
-			batch_number AS 单号,
-			serial_number AS sn号,
-			primitive_sn AS 原始sn,
-			staff AS 工号,
-			`table` AS 工位,
+			batch_number AS batchNumber,
+			serial_number AS serialNumber,
+			primitive_sn AS primitiveSn,
+			staff,
+			`table`,
 			DATE_FORMAT(
 				create_time,
 				'%Y-%m-%d %H:%i:%S'
-			)AS 时间,
-			`level` AS 等级,
-			t_1310,
-			t_1490,
-			t_1550
+			)AS createTime,
+			`level`,
+			t_1310 as T1310,
+			t_1490 as T1490,
+			t_1550 as T1550
 		FROM
 			t_rl
 		WHERE

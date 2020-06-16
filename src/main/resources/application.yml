@@ -8,6 +8,8 @@ spring:
     username: root
     password: 123abc
 
+# debug: true
+
 # 配置Mapper地址
 mybatis:
   mapperLocations: classpath*:/mappers/**/*.xml

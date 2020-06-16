@@ -7,14 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.sf.json.JSONObject;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jmwdm.framework.JsonFormat;
 import com.jmwdm.user.bean.User;
 import com.jmwdm.user.dao.UserDao;
-import com.jmwdm.user.resource.UserControl;
 /**
  * 用户业务类
  * @author HP
