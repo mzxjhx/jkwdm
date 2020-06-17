@@ -1,4 +1,4 @@
-package com.jmwdm.framework;
+package com.jmwdm.framework.config;
 /* 
  * HP
  * 2020年6月10日-上午9:15:21

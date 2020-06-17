@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jmwdm.framework.JsonFormat;
+import com.jmwdm.framework.Tools.JsonFormat;
 import com.jmwdm.trl.bean.Trl;
 import com.jmwdm.trl.dao.RlDao;
-import com.jmwdm.user.bean.User;
-import com.jmwdm.user.service.UserServiceImpl;
 
 import net.sf.json.JSONObject;
 

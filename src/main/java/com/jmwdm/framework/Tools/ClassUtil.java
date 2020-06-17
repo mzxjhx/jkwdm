@@ -1,4 +1,4 @@
-package com.jmwdm.framework;
+package com.jmwdm.framework.Tools;
 
 import org.springframework.stereotype.Component;
 

@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jmwdm.framework.JsonFormat;
+import com.jmwdm.framework.Tools.JsonFormat;
 import com.jmwdm.trl.bean.Trl;
 import com.jmwdm.trl.service.RLServiceImpl;
-import com.jmwdm.user.bean.User;
 
 /* 
  * @author
