@@ -16,7 +16,8 @@ spring:
       max-active: 100
       max-idle: 10
       max-wait: 100000
-    timeout: 500
+    timeout: 0
+    
 # debug: true
 
 # 配置Mapper地址

@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -22,6 +24,12 @@ public class UserServiceImpl implements IUserService{
 
 	private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 	
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    
+	@Autowired
+    private RedisTemplate redisTemplate;
+	
 	@Autowired
 	private UserDao userDao;	
 	/**
@@ -35,6 +43,7 @@ public class UserServiceImpl implements IUserService{
 	 * 
 	 */
 	public String getJson(User bean) {
+		//stringRedisTemplate.opsForValue().set("aaa", "111");
 		PageHelper.startPage(bean.getPageNum(), bean.getPageSize());
 		List<User> list = userDao.getList(bean);
 		PageInfo<User> info = new PageInfo<User>(list);
