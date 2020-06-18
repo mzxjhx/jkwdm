@@ -18,12 +18,21 @@
 			id,
 			login_name as "loginName",
 			passwd,
-			role,
+			role_key as roleKey,
 			DATE_FORMAT(login_time, '%Y-%m-%d %H:%i') loginTime
 		from t_user
 	</select>
 
 	<select id="getBean" resultType="com.jmwdm.user.bean.User">
-	
+		select 
+			id,
+			login_name as "loginName",
+			passwd,
+			role_key as roleKey,
+			DATE_FORMAT(login_time, '%Y-%m-%d %H:%i') loginTime
+		from t_user
+		where
+			login_name=#{loginName} 
+			and passwd=#{passwd}
 	</select>
 </mapper>   

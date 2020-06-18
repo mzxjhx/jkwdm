@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jmwdm.matter.dao.MatterDAO">
+  <resultMap id="BaseResultMap" type="com.jmwdm.matter.bean.Matter">
+    <id column="matter_key" jdbcType="VARCHAR" property="matterKey" />
+    <result column="user_key" jdbcType="VARCHAR" property="userKey" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    matter_key as "matterKey", 
+    user_key as userKey, 
+    content, 
+    `status`, 
+	DATE_FORMAT(a.create_date, '%Y-%m-%d %H:%i') createTime
+  </sql>
+  
+  <select id="getBean" resultType="com.jmwdm.matter.bean.Matter">
+    select 
+    <include refid="Base_Column_List" />
+    from t_matter
+    where matter_key = #{matterKey}
+  </select>
+  
+  <select id="getList" resultType="com.jmwdm.matter.bean.Matter">
+  	select
+    matter_key, user_key, content, `status`, create_time
+  	from t_matter
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_matter
+    where matter_key = #{matterKey,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" keyColumn="matter_key" keyProperty="matterKey" parameterType="com.jmwdm.matter.bean.Matter" useGeneratedKeys="true">
+    insert into t_matter 
+    (
+    	user_key, 
+    	content, 
+    	`status`, 
+      	create_time
+    )
+    values 
+    (
+    	#{userKey}, 
+    	#{content}, 
+    	#{status}, 
+      	now()
+    )
+  </insert>
+  
+  <update id="update">
+  	update t_matter
+    <set>
+      <if test="userKey != null">
+        user_key = #{userKey,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where matter_key = #{matterKey}
+  </update>
+  
+</mapper>
