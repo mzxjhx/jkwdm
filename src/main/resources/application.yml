@@ -6,15 +6,6 @@ spring:
   profiles: 
    active: db  #引入另外一个同路径下yml配置文件，该配置文件必须以application-开头
 
-  redis:
-    host: 192.168.1.65
-    port: 6379
-    database: 0
-    pool:
-      max-active: 100
-      max-idle: 10
-      max-wait: 100000
-    timeout: 0
     
 # debug: true
 
