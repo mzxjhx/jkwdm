@@ -5,17 +5,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+import com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration;
 
 
-@SpringBootApplication
+@SpringBootApplication(exclude = PageHelperAutoConfiguration.class)
 @MapperScan({"com.jmwdm.*.dao"})
 //@ComponentScan(basePackages= {"com.jmwdm.framework"})
 @ServletComponentScan
 public class SpringBootApplicationMain extends SpringBootServletInitializer{
 	 
-	@Override
+	/**
+	 * 以war包形式部署到tomcat，需要继承SpringBootServletInitializer
+	 */
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		// TODO Auto-generated method stub
 		return builder.sources(SpringBootApplicationMain.class);
