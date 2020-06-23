@@ -5,7 +5,7 @@
   <sql id="Base_Column_List">
     id, 
     name, 
-    if(type = 1,'RL','IL') type, 
+    if(type = 1,'RL','IL') ILRL, 
     levelA, 
     levelB, 
     port_c as portC,
@@ -90,13 +90,52 @@
 	)
   </insert>
   
+  <insert id="saveRL">
+  	insert into irl_config 
+    (
+		name,
+		`type`,
+		levelA,
+		levelB,
+		port_c,
+		port_p,
+		port_r,
+		c_1310,
+		c_1490,
+		c_1550,
+		p_1310,
+		p_1490,
+		p_1550,
+		r_1310,
+		r_1490,
+		r_1550,			
+		create_time
+	)
+	VALUES
+	(
+		#{name} ,
+		#{type} ,
+		#{LevelA} ,
+		#{LevelB} ,
+		#{PortC} ,
+		#{PortP} ,
+		#{PortR} ,
+		#{C1310} ,#{C1490} ,#{C1550},
+		#{P1310} ,#{P1490} ,#{P1550},
+		#{R1310} ,#{R1490} ,#{R1550},			
+		now()
+	)
+  </insert>
+  
   <update id="update">
   	update irl_config
     <set>
       <if test="levelA != null">
-        levelA = #{levelA},
+        levelA = #{levelA}
       </if>
-      
+      <if test="LevelB != null and LevelB != ''">
+      	LevelB = #{LevelB}
+      </if>
     </set>
     where id = #{id}
   </update>

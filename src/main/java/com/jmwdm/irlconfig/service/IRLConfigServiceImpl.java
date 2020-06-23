@@ -50,7 +50,7 @@ public class IRLConfigServiceImpl implements IRLService{
 	@Transactional
 	public int saveRLConfig(IRLConfig bean) {
 		// TODO Auto-generated method stub
-		return dao.insert(bean);
+		return dao.saveRL(bean);
 	}
 
 	@Transactional

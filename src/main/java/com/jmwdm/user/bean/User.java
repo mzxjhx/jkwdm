@@ -20,6 +20,12 @@ public class User extends BaseBean{
 	int role;
 	String loginTime;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getUserKey() {
 		return userKey;
 	}

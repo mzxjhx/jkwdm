@@ -32,8 +32,8 @@ public class IRLControl extends BaseControl{
 	private IRLService service;
 	
 	@ResponseBody
-	@RequestMapping(value="/getRLList", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
-	public String getRLList(HttpServletRequest request, HttpServletResponse response,
+	@RequestMapping(value="/getList", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
+	public String getList(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("pageNum") Integer pageNum, 
 			@RequestParam("pageSize") Integer pageSize) {
 		

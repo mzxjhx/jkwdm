@@ -41,6 +41,8 @@ public class IRLConfig extends BaseBean{
 	private boolean ilPortR;	//ref端口可选
 	private float  il2;			//通道2合格
 	private String createTime;	//
+	
+	private String ILRL;	//IL或RL
 	public String getName() {
 		return name;
 	}
@@ -178,6 +180,12 @@ public class IRLConfig extends BaseBean{
 	}
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+	public String getILRL() {
+		return ILRL;
+	}
+	public void setILRL(String iLRL) {
+		ILRL = iLRL;
 	}
 	
 	

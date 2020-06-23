@@ -13,7 +13,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * HP
  * 2020年6月22日-下午4:04:46
  * 
- */
+
 @Configuration
 @PropertySource("classpath:application-db.yml")
 @ConfigurationProperties(prefix = "spring")
@@ -52,3 +52,4 @@ public class JedisConfig {
         return jedisPool;
     }
 }
+ */

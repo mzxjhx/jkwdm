@@ -11,10 +11,10 @@ import redis.clients.jedis.JedisPool;
  * 2020年6月22日-下午4:17:41
  * 
  */
-@Component
+//@Component
 public class RedisUtil {
 
-    @Autowired
+    //@Autowired
     private JedisPool jedisPool;
 
     /**
@@ -65,7 +65,9 @@ public class RedisUtil {
     }
 
     /**
-     * 删除指定Key-Value
+     * 
+     * @param key
+     * @return
      */
     public Long delete(String key) {
         Jedis jedis = null;

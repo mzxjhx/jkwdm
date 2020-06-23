@@ -37,8 +37,8 @@ public class MatterServiceImpl implements IMatterService{
 	@Autowired
     private RedisTemplate redisTemplate;
 	*/
-	@Autowired
-	private RedisUtil util;
+	//@Autowired
+	//private RedisUtil util;
 	
 	@Autowired
 	MatterDAO dao;
@@ -49,7 +49,7 @@ public class MatterServiceImpl implements IMatterService{
 	public String getList(Matter bean) {
        // stringRedisTemplate.opsForValue().set("ccc", "111");
         //log.info("redis get ccc={}",stringRedisTemplate.opsForValue().get("ccc"));
-        util.set("RedisUtil", "666");
+
 		PageHelper.startPage(bean.getPageNum(), bean.getPageSize());
 		List<Matter> list = dao.getList(bean);
 		PageInfo<Matter> info = new PageInfo<Matter>(list);

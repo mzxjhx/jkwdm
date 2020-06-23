@@ -13,5 +13,5 @@ import com.jmwdm.irlconfig.bean.IRLConfig;
 @Repository
 public interface IRLDao extends BaseDao<IRLConfig>{
 
-	
+	int saveRL(IRLConfig bean);
 }
