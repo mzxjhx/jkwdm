@@ -20,6 +20,8 @@ import com.jmwdm.framework.Tools.ExportExcelUtils;
 import com.jmwdm.framework.Tools.JsonFormat;
 import com.jmwdm.user.bean.User;
 import com.jmwdm.user.service.UserServiceImpl;
+
+import ch.qos.logback.core.net.LoginAuthenticator;
 /*
  * 
  */
@@ -33,7 +35,31 @@ public class UserControl {
 	private UserServiceImpl service;
 	
 	/**
-	 * 
+	 * 登录
+	 * @param request
+	 * @param response
+	 * @param name
+	 * @param passwd
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="login", method=RequestMethod.POST,  produces = "application/json;charset=UTF-8")
+	public String login(HttpServletRequest request, 
+			HttpServletResponse response,
+			@RequestParam("name") String name, 
+			@RequestParam("passwd") String passwd) {
+		log.info("user/login");
+		if(name == null || passwd == null) {
+			return JsonFormat.formatList(100, "参数错误", 0, null).toString();
+		}
+		User bean = new User();
+		bean.setLoginName(name);
+		bean.setPasswd(passwd);
+		return service.login(bean);
+	}
+	
+	/**
+	 * 用户列表
 	 * @param request
 	 * @param response
 	 * @param pageNum
@@ -60,7 +86,7 @@ public class UserControl {
 	 * 
 	 * @param request
 	 * @param response
-	 */
+
 	@RequestMapping(value="exportExcel", method=RequestMethod.GET)
 	public void exportExcel(HttpServletRequest request, HttpServletResponse response) {
 		User bean = new User();
@@ -74,4 +100,5 @@ public class UserControl {
 		//ExcelUtils.export(response, list, new String[] {"id","用户名","密码","权限"});
         ExportExcelUtils.export("用户表",list,fieldMap,response);
 	}
+		 */
 }

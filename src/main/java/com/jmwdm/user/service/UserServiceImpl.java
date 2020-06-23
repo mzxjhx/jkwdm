@@ -25,10 +25,13 @@ public class UserServiceImpl implements IUserService{
 	@Autowired
 	private UserDao userDao;	
 	/**
-	 * 
+	 * 登录，返回json
 	 */
-	public List<User> getList(User bean) {
-		return userDao.getList(bean);
+	public String login(User bean) {		
+		bean = userDao.getBean(bean);
+		if(bean==null)
+			return JsonFormat.formatJsonBody(100, "用户名或密码错误", null).toString();
+		return JsonFormat.formatJsonBody(200, "ok", bean).toString();
 	}
 	
 	/**

@@ -18,7 +18,7 @@
 			id,
 			login_name as "loginName",
 			passwd,
-			role_key as roleKey,
+			role,
 			DATE_FORMAT(login_time, '%Y-%m-%d %H:%i') loginTime
 		from t_user
 	</select>
@@ -28,7 +28,7 @@
 			id,
 			login_name as "loginName",
 			passwd,
-			role_key as roleKey,
+			role,
 			DATE_FORMAT(login_time, '%Y-%m-%d %H:%i') loginTime
 		from t_user
 		where

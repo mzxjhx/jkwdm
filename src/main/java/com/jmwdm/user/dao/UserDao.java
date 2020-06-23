@@ -1,6 +1,5 @@
 package com.jmwdm.user.dao;
 
-import java.util.List;
 
 import org.springframework.stereotype.Repository;
 

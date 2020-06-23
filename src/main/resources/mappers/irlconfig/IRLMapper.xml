@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jmwdm.irlconfig.dao.IRLDao">
+  
+  <sql id="Base_Column_List">
+    id, 
+    name, 
+    if(type = 1,'RL','IL') type, 
+    levelA, 
+    levelB, 
+    port_c as portC,
+    port_p as portP,
+    port_r as portR,
+    c_1310 as C1310,
+    c_1490 as C1490,
+    c_1550 as C1550,        
+    p_1310 as P1310,
+    p_1490 as P1490,
+    p_1550 as P1550,           
+    r_1310 as R1310,
+    r_1490 as R1490,
+    r_1550 as R1550,
+	DATE_FORMAT(create_time, '%Y-%m-%d %H:%i') createTime
+  </sql>
+  
+  
+  <select id="getBean" resultType="com.jmwdm.irlconfig.bean.IRLConfig">
+    select 
+		<include refid="Base_Column_List" />
+    from irl_config
+    where id = #{id}
+  </select>
+  
+  <select id="getList" resultType="com.jmwdm.irlconfig.bean.IRLConfig">
+  	select
+		<include refid="Base_Column_List" />
+  	from irl_config
+  	where 1=1
+  	<if test="name != null and name != ''">
+  		and name=#{name}
+  	</if>
+  </select>
+  
+  <insert id="insert">
+    insert into irl_config 
+    (
+		name,
+		`type`,
+		levelA,
+		levelB,
+		port_c,
+		port_p,
+		port_r,
+		c_1310,
+		c_1490,
+		c_1550,
+		p_1310,
+		p_1490,
+		p_1550,
+		r_1310,
+		r_1490,
+		r_1550,				
+		il_type,
+		both_port,
+		il_port_p,
+		il_1,
+		il_port_r,
+		il_2,
+		create_time
+	)
+	VALUES
+	(
+		#{name} ,
+		#{type} ,
+		#{LevelA} ,
+		#{LevelB} ,
+		#{PortC} ,
+		#{PortP} ,
+		#{PortR} ,
+		#{C1310} ,#{C1490} ,#{C1550},
+		#{P1310} ,#{P1490} ,#{P1550},
+		#{R1310} ,#{R1490} ,#{R1550},		
+		#{ilType},
+		#{bothPort},
+		#{ilPortP},
+		#{il1},
+		#{ilPortR},
+		#{il2},		
+		now()
+	)
+  </insert>
+  
+  <update id="update">
+  	update irl_config
+    <set>
+      <if test="levelA != null">
+        levelA = #{levelA},
+      </if>
+      
+    </set>
+    where id = #{id}
+  </update>
+  
+</mapper>

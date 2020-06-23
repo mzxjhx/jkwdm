@@ -17,7 +17,7 @@ public class User extends BaseBean{
 	String userKey;
 	String loginName;	
 	String passwd;	
-	String roleKey;
+	int role;
 	String loginTime;
 	
 	public String getUserKey() {
@@ -38,11 +38,12 @@ public class User extends BaseBean{
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public String getRoleKey() {
-		return roleKey;
+
+	public int getRole() {
+		return role;
 	}
-	public void setRoleKey(String roleKey) {
-		this.roleKey = roleKey;
+	public void setRole(int role) {
+		this.role = role;
 	}
 	public String getLoginTime() {
 		return loginTime;

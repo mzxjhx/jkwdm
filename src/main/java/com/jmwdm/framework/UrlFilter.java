@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,13 +30,16 @@ public class UrlFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public void doFilter(ServletRequest request, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 				
 		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse response = (HttpServletResponse)res;
+		//允许跨域
+		response.setHeader("Access-Control-Allow-Origin","*");
 		logger.info("token={}", req.getParameter("token"));
 		logger.info(req.getRequestURI());
-        chain.doFilter(request, response);
+        chain.doFilter(request, res);
 	}
 
 	@Override
