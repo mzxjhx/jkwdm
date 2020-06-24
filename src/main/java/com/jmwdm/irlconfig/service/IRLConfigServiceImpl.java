@@ -48,27 +48,30 @@ public class IRLConfigServiceImpl implements IRLService{
 	}
 
 	@Transactional
-	public int saveRLConfig(IRLConfig bean) {
-		// TODO Auto-generated method stub
-		return dao.saveRL(bean);
+	public String saveRLConfig(IRLConfig bean) {
+		
+		if(dao.saveRL(bean)>0)
+			return JsonFormat.formatJsonBody(200, "保存成功").toString();
+		return JsonFormat.formatJsonBody(100, "保存出错").toString();
 	}
 
 	@Transactional
-	public int saveILConfig(IRLConfig bean) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String saveILConfig(IRLConfig bean) {
+		if(dao.insert(bean)>0)
+			return JsonFormat.formatJsonBody(200, "保存成功").toString();
+		return JsonFormat.formatJsonBody(100, "保存出错").toString();
 	}
 
 	@Transactional
-	public int updateRLConfig(IRLConfig bean) {
+	public String updateRLConfig(IRLConfig bean) {
 		// TODO Auto-generated method stub
-		return 0;
+		return "";
 	}
 
 	@Transactional
-	public int updateILConfig(IRLConfig bean) {
+	public String updateILConfig(IRLConfig bean) {
 		// TODO Auto-generated method stub
-		return 0;
+		return "";
 	}
 
 }

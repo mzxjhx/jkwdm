@@ -46,4 +46,12 @@ public class IRLControl extends BaseControl{
 		
 		return service.getRLConfig(bean);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/saveRL", method=RequestMethod.POST,  produces = "application/json;charset=UTF-8")
+	public String saveRL(HttpServletRequest request,HttpServletResponse response,IRLConfig bean) {
+		
+		return service.saveRLConfig(bean);
+				
+	}
 }

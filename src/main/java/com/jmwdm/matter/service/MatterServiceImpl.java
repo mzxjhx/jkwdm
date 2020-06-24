@@ -2,20 +2,16 @@ package com.jmwdm.matter.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jmwdm.framework.Tools.JsonFormat;
-import com.jmwdm.framework.config.RedisUtil;
 import com.jmwdm.matter.bean.Matter;
 import com.jmwdm.matter.dao.MatterDAO;
 import com.jmwdm.matter.resource.MatterControl;
@@ -30,15 +26,6 @@ import com.jmwdm.matter.resource.MatterControl;
 public class MatterServiceImpl implements IMatterService{
 
 	private static final Logger log = LoggerFactory.getLogger(MatterControl.class);
-	/*
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-	
-	@Autowired
-    private RedisTemplate redisTemplate;
-	*/
-	//@Autowired
-	//private RedisUtil util;
 	
 	@Autowired
 	MatterDAO dao;

@@ -15,11 +15,11 @@ public interface IRLService{
 
 	String getILConfig(IRLConfig bean);
 	
-	int saveRLConfig(IRLConfig bean);
+	String saveRLConfig(IRLConfig bean);
 	
-	int saveILConfig(IRLConfig bean);
+	String saveILConfig(IRLConfig bean);
 	
-	int updateRLConfig(IRLConfig bean);
+	String updateRLConfig(IRLConfig bean);
 	
-	int updateILConfig(IRLConfig bean);
+	String updateILConfig(IRLConfig bean);
 }

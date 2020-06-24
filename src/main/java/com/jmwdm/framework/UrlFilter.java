@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 /* 
  * HP
  * 2020年6月9日-下午4:16:29
  * 定义过滤器
  */
 @WebFilter
+@Configuration
 public class UrlFilter implements Filter {
 
 	private Logger logger = LoggerFactory.getLogger(UrlFilter.class);
