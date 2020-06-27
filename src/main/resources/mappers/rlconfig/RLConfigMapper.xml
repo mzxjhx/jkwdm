@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jmwdm.irlconfig.dao.IRLDao">
+
+<!-- 回损测试参数sql -->
+<mapper namespace="com.jmwdm.rlconfig.dao.RLConfigDao">
   
   <sql id="Base_Column_List">
     id, 
     name, 
-    if(type = 1,'RL','IL') ILRL, 
     levelA, 
     levelB, 
     port_c as portC,
@@ -24,77 +25,27 @@
   </sql>
   
   
-  <select id="getBean" resultType="com.jmwdm.irlconfig.bean.IRLConfig">
+  <select id="getBean" resultType="com.jmwdm.rlconfig.bean.RLConfig">
     select 
 		<include refid="Base_Column_List" />
-    from irl_config
+    from rl_config
     where id = #{id}
   </select>
   
-  <select id="getList" resultType="com.jmwdm.irlconfig.bean.IRLConfig">
+  <select id="getList" resultType="com.jmwdm.rlconfig.bean.RLConfig">
   	select
 		<include refid="Base_Column_List" />
-  	from irl_config
+  	from rl_config
   	where 1=1
   	<if test="name != null and name != ''">
   		and name=#{name}
   	</if>
   </select>
-  
+   
   <insert id="insert">
-    insert into irl_config 
+  	insert into rl_config 
     (
 		name,
-		`type`,
-		levelA,
-		levelB,
-		port_c,
-		port_p,
-		port_r,
-		c_1310,
-		c_1490,
-		c_1550,
-		p_1310,
-		p_1490,
-		p_1550,
-		r_1310,
-		r_1490,
-		r_1550,				
-		il_type,
-		both_port,
-		il_port_p,
-		il_1,
-		il_port_r,
-		il_2,
-		create_time
-	)
-	VALUES
-	(
-		#{name} ,
-		#{type} ,
-		#{levelA} ,
-		#{levelB} ,
-		#{PortC} ,
-		#{PortP} ,
-		#{PortR} ,
-		#{C1310} ,#{C1490} ,#{C1550},
-		#{P1310} ,#{P1490} ,#{P1550},
-		#{R1310} ,#{R1490} ,#{R1550},		
-		#{ilType},
-		#{bothPort},
-		#{ilPortP},
-		#{il1},
-		#{ilPortR},
-		#{il2},		
-		now()
-	)
-  </insert>
-  
-  <insert id="saveRL">
-  	insert into irl_config 
-    (
-		name,
-		`type`,
 		levelA,
 		levelB,
 		port_c,
@@ -114,7 +65,6 @@
 	VALUES
 	(
 		#{name} ,
-		#{type} ,
 		#{levelA} ,
 		#{levelB} ,
 		#{portC} ,
@@ -127,17 +77,28 @@
 	)
   </insert>
   
+  <delete id="delete">
+  	delete from rl_config where id=#{id}
+  </delete>
+  
   <update id="update">
-  	update irl_config
-    <set>
-      <if test="levelA != null">
-        levelA = #{levelA}
-      </if>
-      <if test="LevelB != null and LevelB != ''">
-      	LevelB = #{LevelB}
-      </if>
-    </set>
+  	update rl_config set
+	     name=#{name},
+		levelA=#{levelA},
+		levelB=#{levelB},
+		port_c=#{portC},
+		port_p=#{portP},
+		port_r=#{portR},
+		c_1310=#{C1310},
+		c_1490=#{C1490},
+		c_1550=#{C1550},
+		p_1310=#{P1310},
+		p_1490=#{P1490},
+		p_1550=#{P1550},
+		r_1310=#{R1310},
+		r_1490=#{R1490},
+		r_1550=#{R1550},			
+		create_time
     where id = #{id}
   </update>
-  
 </mapper>

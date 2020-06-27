@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jmwdm.ilconfig.dao.ILDao">
+  
+  <sql id="Base_Column_List">
+    id, 
+    name, 
+    il_type as ilType,
+	both_port as bothPort,
+	il_port_p as ilPortP,
+	il_1 as il1,
+	il_port_r as ilPortR,
+	il_2 as il2,
+	DATE_FORMAT(create_time, '%Y-%m-%d %H:%i') createTime
+  </sql>
+  
+  
+  <select id="getBean" resultType="com.jmwdm.ilconfig.bean.ILConfig">
+    select 
+		<include refid="Base_Column_List" />
+    from wdm_config
+    where id = #{id}
+  </select>
+  
+  <select id="getList" resultType="com.jmwdm.ilconfig.bean.ILConfig">
+  	select
+		<include refid="Base_Column_List" />
+  	from wdm_config
+  	where 1=1
+  	<if test="name != null and name != ''">
+  		and name=#{name}
+  	</if>
+  </select>
+  
+  <insert id="insert">
+    insert into wdm_config 
+    (
+		name,
+		`type`,			
+		il_type,
+		both_port,
+		il_port_p,
+		il_1,
+		il_port_r,
+		il_2,
+		create_time
+	)
+	VALUES
+	(
+		#{name} ,
+		2,		
+		#{ilType},
+		#{bothPort},
+		#{ilPortP},
+		#{il1},
+		#{ilPortR},
+		#{il2},		
+		now()
+	)
+  </insert>
+  
+  
+  <delete id="delete">
+  	delete from wdm_config
+  </delete>
+  
+  <update id="update">
+  	update wdm_config set
+		name=#{name}
+    where id = #{id}
+  </update>
+  
+ 
+</mapper>

@@ -1,5 +1,8 @@
 package com.jmwdm.trl.resource;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jmwdm.framework.Tools.ExportExcelUtils;
 import com.jmwdm.framework.Tools.JsonFormat;
 import com.jmwdm.trl.bean.Trl;
 import com.jmwdm.trl.service.RLServiceImpl;
@@ -42,6 +46,26 @@ public class RLControl {
 		Trl bean = new Trl();
 		bean.setPageNum(pageNum);
 		bean.setPageSize(pageSize);
-		return service.getJson(bean);
+		return service.getList(bean);
+	}
+	
+	/**
+	 * 导出Excel
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="exportExcel", method=RequestMethod.GET)
+	public void exportExcel(HttpServletRequest request, 
+			HttpServletResponse response) {
+		Trl bean = new Trl();
+		List<Trl> list = service.exportExcel(bean);
+		//获取需要转出的excel表头的map字段
+        LinkedHashMap<String, String> fieldMap = new LinkedHashMap<>();
+        fieldMap.put("serialNumber","SN号");
+        fieldMap.put("primitiveSn","原始sn");
+        fieldMap.put("batchNumber","批次号");
+
+		//ExcelUtils.export(response, list, new String[] {"id","用户名","密码","权限"});
+        ExportExcelUtils.export("回损数据",list,fieldMap,response);
 	}
 }

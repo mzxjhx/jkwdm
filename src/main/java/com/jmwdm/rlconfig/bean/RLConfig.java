@@ -1,34 +1,35 @@
-package com.jmwdm.irlconfig.bean;
+package com.jmwdm.rlconfig.bean;
 
 import com.jmwdm.framework.BaseBean;
 
-/* 
- * 配置文件类
- * 2020年6月23日-下午3:57:17
- * 
+/**
+ * RL测试参数
+ * @author pc
+ * @date 2020年6月26日
  */
-public class IRLConfig extends BaseBean{
+public class RLConfig extends BaseBean{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private int id;
 	private String name;
-	private int type;
 	private float levelA;
 	private float levelB;
-	private boolean portC;
-	private boolean portP;
-	private boolean portR;
+	private float maxVal;
+	private float minVal;
+	private boolean portC;	//C端口可选
+	private boolean portP;	//p端口可选
+	private boolean portR;	//R端口可选
 	
 	private String waveC;
 	private String waveP;
 	private String waveR;
 	//三个端口，可单独选三个波长，互不冲突
-	private boolean C1310;
-	private boolean C1490;
-	private boolean C1550;
+	private boolean C1310;	//C端口选1310波长
+	private boolean C1490;	//c端口选1490波长
+	private boolean C1550;	//c端口选1550波长
 	
 	private boolean P1310;
 	private boolean P1490;
@@ -37,16 +38,16 @@ public class IRLConfig extends BaseBean{
 	private boolean R1310;
 	private boolean R1490;
 	private boolean R1550;	
+	private String createTime;
 	
-	private String ilType;	//IL/RL/DIR
-	private boolean bothPort; //是否测两根
-	private boolean ilPortP;	//pass端口可选
-	private float  il1;			//通道1合格值
-	private boolean ilPortR;	//ref端口可选
-	private float  il2;			//通道2合格
-	private String createTime;	//
-	
-	private String ILRL;	//IL或RL
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -54,14 +55,6 @@ public class IRLConfig extends BaseBean{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
 	}
 
 	public float getLevelA() {
@@ -78,6 +71,22 @@ public class IRLConfig extends BaseBean{
 
 	public void setLevelB(float levelB) {
 		this.levelB = levelB;
+	}
+
+	public float getMaxVal() {
+		return maxVal;
+	}
+
+	public void setMaxVal(float maxVal) {
+		this.maxVal = maxVal;
+	}
+
+	public float getMinVal() {
+		return minVal;
+	}
+
+	public void setMinVal(float minVal) {
+		this.minVal = minVal;
 	}
 
 	public boolean isPortC() {
@@ -200,54 +209,6 @@ public class IRLConfig extends BaseBean{
 		R1550 = r1550;
 	}
 
-	public String getIlType() {
-		return ilType;
-	}
-
-	public void setIlType(String ilType) {
-		this.ilType = ilType;
-	}
-
-	public boolean isBothPort() {
-		return bothPort;
-	}
-
-	public void setBothPort(boolean bothPort) {
-		this.bothPort = bothPort;
-	}
-
-	public boolean isIlPortP() {
-		return ilPortP;
-	}
-
-	public void setIlPortP(boolean ilPortP) {
-		this.ilPortP = ilPortP;
-	}
-
-	public float getIl1() {
-		return il1;
-	}
-
-	public void setIl1(float il1) {
-		this.il1 = il1;
-	}
-
-	public boolean isIlPortR() {
-		return ilPortR;
-	}
-
-	public void setIlPortR(boolean ilPortR) {
-		this.ilPortR = ilPortR;
-	}
-
-	public float getIl2() {
-		return il2;
-	}
-
-	public void setIl2(float il2) {
-		this.il2 = il2;
-	}
-
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -255,15 +216,5 @@ public class IRLConfig extends BaseBean{
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
-
-	public String getILRL() {
-		return ILRL;
-	}
-
-	public void setILRL(String iLRL) {
-		ILRL = iLRL;
-	}
-	
-	
 	
 }

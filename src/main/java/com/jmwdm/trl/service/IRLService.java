@@ -1,6 +1,8 @@
 package com.jmwdm.trl.service;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.jmwdm.trl.bean.Trl;
@@ -14,5 +16,5 @@ public interface IRLService {
 
 	String getList(Trl bean);
 	
-	String getJson(Trl bean);
+	List<Trl> exportExcel(Trl bean);
 }

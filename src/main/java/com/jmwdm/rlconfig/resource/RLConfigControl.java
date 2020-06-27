@@ -1,4 +1,4 @@
-package com.jmwdm.irlconfig.resource;
+package com.jmwdm.rlconfig.resource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,22 +14,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jmwdm.framework.BaseControl;
 import com.jmwdm.framework.Tools.JsonFormat;
-import com.jmwdm.irlconfig.bean.IRLConfig;
-import com.jmwdm.irlconfig.service.IRLService;
-
-/* 
- * HP
- * 2020年6月23日-下午4:07:34
- * 
+import com.jmwdm.rlconfig.bean.RLConfig;
+import com.jmwdm.rlconfig.service.IRLConfigService;
+/**
+ * a回损测试参数配置
+ * @author pc
+ * @date 2020年6月26日
  */
 @Controller
-@RequestMapping(value="/config")
-public class IRLControl extends BaseControl{
+@RequestMapping(value="rlconfig")
+public class RLConfigControl extends BaseControl{
 
-	Logger log = LoggerFactory.getLogger(IRLControl.class);
+	Logger log = LoggerFactory.getLogger(RLConfigControl.class);
 	
 	@Autowired
-	private IRLService service;
+	private IRLConfigService service;
 	
 	@ResponseBody
 	@RequestMapping(value="/getList", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
@@ -40,18 +39,24 @@ public class IRLControl extends BaseControl{
 		if(pageNum == null || pageSize == null) {
 			return JsonFormat.formatList(100, "参数错误", 0, null).toString();
 		}
-		IRLConfig bean = new IRLConfig();
+		RLConfig bean = new RLConfig();
 		bean.setPageNum(pageNum);
 		bean.setPageSize(pageSize);
 		
-		return service.getRLConfig(bean);
+		return service.getConfig(bean);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/saveRL", method=RequestMethod.POST,  produces = "application/json;charset=UTF-8")
-	public String saveRL(HttpServletRequest request,HttpServletResponse response,IRLConfig bean) {
+	@RequestMapping(value="/save", method=RequestMethod.POST,  produces = "application/json;charset=UTF-8")
+	public String saveRL(HttpServletRequest request,HttpServletResponse response,RLConfig bean) {
 		
-		return service.saveRLConfig(bean);
-				
+		return service.saveConfig(bean);				
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/delete", method=RequestMethod.POST,  produces = "application/json;charset=UTF-8")
+	public String delete(HttpServletRequest request,HttpServletResponse response,RLConfig bean) {
+		
+		return service.deleteConfig(bean);				
 	}
 }
