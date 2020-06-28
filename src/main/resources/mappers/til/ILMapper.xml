@@ -5,10 +5,38 @@
 	
 	<select id="getList" resultType="com.jmwdm.til.bean.Til">
 		SELECT
-			*			
+			serial_number AS serialNumber,
+			primitive_sn AS primitiveSn,
+			batch_number batchNumber,
+			TABLE,
+			DATE_FORMAT(
+				create_time,
+				'%Y-%m-%d %H:%i'
+			)createTime,
+			staff,
+			level,
+			type,
+			wave1,
+			il1,
+			wave2,
+			il2,
+			ref_1 ref1,
+			ref_2 ref2,
+			c.name config
 		FROM
-			t_il
-		
+			t_il il
+		left join wdm_config c on il.config=c.id
+		where 
+		1=1
+		<if test="serialNumber != null and serialNumber != ''">
+			and serial_number = #{serialNumber}
+		</if>
+		<if test="batchNumber != null and batchNumber != ''">
+			and batch_number = #{batchNumber}
+		</if>
+		<if test="level != null and level != ''">
+			and level = #{level}
+		</if>		
 	</select>
 
 </mapper>   

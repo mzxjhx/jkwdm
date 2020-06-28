@@ -25,7 +25,11 @@
 
 			c_1310 as C1310,
 			c_1490 as C1490,
-			c_1550 as C1550						
+			c_1550 as C1550,		
+			rl_c as rlC,
+			rl_t as rlT,
+			rl_r as rlR
+			
 		FROM
 			t_rl
 		WHERE
