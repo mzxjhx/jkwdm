@@ -11,7 +11,7 @@ public interface IUserService {
 	 * @param bean
 	 * @return
 	 */
-	String login(User bean);
+	User login(User bean);
 	/**
 	 * 员工列表
 	 * @param bean

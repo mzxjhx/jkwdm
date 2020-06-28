@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,6 @@ import com.jmwdm.framework.Tools.JsonFormat;
 import com.jmwdm.user.bean.User;
 import com.jmwdm.user.service.UserServiceImpl;
 
-import ch.qos.logback.core.net.LoginAuthenticator;
 /*
  * 
  */
@@ -55,7 +55,15 @@ public class UserControl {
 		User bean = new User();
 		bean.setLoginName(name);
 		bean.setPasswd(passwd);
-		return service.login(bean);
+		bean = service.login(bean);
+		if(bean!=null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", bean);
+			return JsonFormat.formatJsonBody(200, "ok", bean).toString();
+		}
+		return JsonFormat.formatJsonBody(100, "用户名或密码错误").toString();
+		
+		//return service.login(bean);		
 	}
 	
 	/**
@@ -82,6 +90,14 @@ public class UserControl {
 		return service.getJson(bean);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="loginOut", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
+	public String loginOut(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return JsonFormat.formatJsonBody(401, "退出系统").toString();
+	}
 	/**
 	 * 
 	 * @param request
