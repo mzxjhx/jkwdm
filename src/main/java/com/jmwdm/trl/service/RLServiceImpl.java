@@ -37,18 +37,12 @@ public class RLServiceImpl implements IRLService{
 		List<Trl> list = dao.getList(bean);
 		PageInfo<Trl> info = new PageInfo<Trl>(list);
 		String msg = JsonFormat.formatList(200, "ok", info.getTotal(), info.getList()).toString();
-		log.info(msg);
+		//log.info(msg);
 		return msg;
 	}
 
 	@Override
 	public List<Trl> exportExcel(Trl bean) {
-
-		List<Trl> list = dao.getList(bean);
-		PageInfo<Trl> info = new PageInfo<Trl>(list);
-		return info.getList();
+		return dao.getList(bean);
 	}
-
-
-
 }

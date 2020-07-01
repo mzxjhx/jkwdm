@@ -30,6 +30,9 @@ public class Til extends BaseBean {
 	float ref1;// '参考值1',
 	float ref2;// '参考值2',
 	String config;// '测试工艺配置',
+	
+	private String beginTime;
+	private String endTime;
 	public int getId() {
 		return id;
 	}
@@ -126,7 +129,17 @@ public class Til extends BaseBean {
 	public void setConfig(String config) {
 		this.config = config;
 	}
-	
-	
+	public String getBeginTime() {
+		return beginTime;
+	}
+	public void setBeginTime(String beginTime) {
+		this.beginTime = beginTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}	
 	
 }

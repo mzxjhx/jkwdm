@@ -15,17 +15,17 @@
 				'%Y-%m-%d %H:%i:%S'
 			)AS createTime,
 			`level`,
-			t_1310 as T1310,
-			t_1490 as T1490,
-			t_1550 as T1550,
+			t_1310 as t1310,
+			t_1490 as t1490,
+			t_1550 as t1550,
 
-			r_1310 as R1310,
-			r_1490 as R1490,
-			r_1550 as R1550,
+			r_1310 as r1310,
+			r_1490 as r1490,
+			r_1550 as r1550,
 
-			c_1310 as C1310,
-			c_1490 as C1490,
-			c_1550 as C1550,		
+			c_1310 as c1310,
+			c_1490 as c1490,
+			c_1550 as c1550,		
 			rl_c as rlC,
 			rl_t as rlT,
 			rl_r as rlR
@@ -40,6 +40,19 @@
 		<if test="batchNumber != null and batchNumber != ''">
 			and batch_number=#{batchNumber}
 		</if>
+		<if test="serialNumber != null and serialNumber != ''">
+			and serial_number=#{serialNumber}
+		</if>
+		<if test="staff != null and staff != ''">
+			and staff=#{staff}
+		</if>
+	  	<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+	  		and create_time between #{beginTime} and #{endTime}
+	  	</if>		
+	  	<if test="table != null and table != ''">
+	  		and `table`=#{table}
+	  	</if>			  	
+		order by create_time desc
 	</select>
 
 </mapper>   

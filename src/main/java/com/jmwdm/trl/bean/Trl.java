@@ -1,5 +1,7 @@
 package com.jmwdm.trl.bean;
 
+import org.aspectj.weaver.AjAttribute.PrivilegedAttribute;
+
 import com.jmwdm.framework.BaseBean;
 
 /**
@@ -21,22 +23,25 @@ public class Trl extends BaseBean{
 	private String createTime;	
 	private String staff;
 	String level;
-	private float T1310;
-	private float T1490;
-	private float T1550;
+	private float t1310;
+	private float t1490;
+	private float t1550;
 	
-	private float R1310;
-	private float R1490;
-	private float R1550;
+	private float r1310;
+	private float r1490;
+	private float r1550;
 	
-	private float C1310;
-	private float C1490;
-	private float C1550;
+	private float c1310;
+	private float c1490;
+	private float c1550;
 	
 	private float rlC;
 	private float rlT;
 	private float rlR;
 	private String config;	//关联测试参数配置
+	
+	private String beginTime;
+	private String endTime;
 	
 	public int getId() {
 		return id;
@@ -87,58 +92,58 @@ public class Trl extends BaseBean{
 		this.level = level;
 	}
 	public float getT1310() {
-		return T1310;
+		return t1310;
 	}
 	public void setT1310(float t1310) {
-		T1310 = t1310;
+		this.t1310 = t1310;
 	}
 	public float getT1490() {
-		return T1490;
+		return t1490;
 	}
 	public void setT1490(float t1490) {
-		T1490 = t1490;
+		this.t1490 = t1490;
 	}
 	public float getT1550() {
-		return T1550;
+		return t1550;
 	}
 	public void setT1550(float t1550) {
-		T1550 = t1550;
+		this.t1550 = t1550;
 	}
 	public float getR1310() {
-		return R1310;
+		return r1310;
 	}
 	public void setR1310(float r1310) {
-		R1310 = r1310;
+		this.r1310 = r1310;
 	}
 	public float getR1490() {
-		return R1490;
+		return r1490;
 	}
 	public void setR1490(float r1490) {
-		R1490 = r1490;
+		this.r1490 = r1490;
 	}
 	public float getR1550() {
-		return R1550;
+		return r1550;
 	}
 	public void setR1550(float r1550) {
-		R1550 = r1550;
+		this.r1550 = r1550;
 	}
 	public float getC1310() {
-		return C1310;
+		return c1310;
 	}
 	public void setC1310(float c1310) {
-		C1310 = c1310;
+		this.c1310 = c1310;
 	}
 	public float getC1490() {
-		return C1490;
+		return c1490;
 	}
 	public void setC1490(float c1490) {
-		C1490 = c1490;
+		this.c1490 = c1490;
 	}
 	public float getC1550() {
-		return C1550;
+		return c1550;
 	}
 	public void setC1550(float c1550) {
-		C1550 = c1550;
+		this.c1550 = c1550;
 	}
 	public float getRlC() {
 		return rlC;
@@ -164,6 +169,17 @@ public class Trl extends BaseBean{
 	public void setConfig(String config) {
 		this.config = config;
 	}
-	
-	
+	public String getBeginTime() {
+		return beginTime;
+	}
+	public void setBeginTime(String beginTime) {
+		this.beginTime = beginTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
 }

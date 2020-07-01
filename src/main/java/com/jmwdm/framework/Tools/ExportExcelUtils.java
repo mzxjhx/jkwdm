@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -35,17 +37,21 @@ public class ExportExcelUtils {
 
         // 设置默认文件名为当前时间：年月日时分秒
         if (excelName == null || excelName == "") {
-            excelName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()).toString();
-                    
+            excelName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()).toString();                    
+        }else {
+        	excelName += new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()).toString();    
         }
         // 设置response头信息
-        response.reset();
+        //response.reset();
         response.setContentType("application/vnd.ms-excel"); // 改成输出excel文件
         try {
-            response.setHeader("Content-disposition", "attachment; filename="
-                    + new String(excelName.getBytes("gb2312"), "ISO-8859-1") + ".xls");
-        } catch (UnsupportedEncodingException e1) {
-            logger.info(e1.getMessage());
+            response.setHeader("Content-disposition", "attachment; filename=" + new String(excelName.getBytes("gb2312"), "ISO-8859-1") + ".xls");
+            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+        }catch(IOException ie) {
+        	logger.info("ie={}",ie.getMessage());
+        }         
+        catch (Exception e1) {
+            logger.info("UnsupportedEncodingException={}",e1.getMessage());
         }
 
         try {
@@ -79,7 +85,7 @@ public class ExportExcelUtils {
      * @return 字段
      */
     public static Field getFieldByName(String fieldName, Class<?> clazz) {
-        logger.info("根据字段名获取字段对象:getFieldByName()");
+        //logger.info("根据字段名获取字段对象:getFieldByName()");
         // 拿到本类的所有字段
         Field[] selfFields = clazz.getDeclaredFields();
 
@@ -113,7 +119,7 @@ public class ExportExcelUtils {
     public static Object getFieldValueByName(String fieldName, Object o)
             throws Exception {
 
-        logger.info("根据字段名获取字段值:getFieldValueByName()");
+        //logger.info("根据字段名获取字段值:getFieldValueByName()");
         Object value = null;
         //根据字段名得到字段对象
         Field field = getFieldByName(fieldName, o.getClass());
@@ -141,7 +147,7 @@ public class ExportExcelUtils {
      */
     public static Object getFieldValueByNameSequence(String fieldNameSequence,
                                                      Object o) throws Exception {
-        logger.info("根据带路径或不带路径的属性名获取属性值,即接受简单属性名:getFieldValueByNameSequence()");
+        //logger.info("根据带路径或不带路径的属性名获取属性值,即接受简单属性名:getFieldValueByNameSequence()");
         Object value = null;
 
         // 将fieldNameSequence进行拆分
@@ -172,7 +178,7 @@ public class ExportExcelUtils {
      */
     public static <T> void fillSheet(HSSFSheet sheet, List<T> list,
                                      LinkedHashMap<String, String> fieldMap, HSSFCellStyle style) throws Exception {
-        logger.info("向工作表中填充数据:fillSheet()");
+        //logger.info("向工作表中填充数据:fillSheet()");
         // 定义存放英文字段名和中文字段名的数组
         String[] enFields = new String[fieldMap.size()];
         String[] cnFields = new String[fieldMap.size()];

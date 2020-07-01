@@ -59,6 +59,7 @@ public class UserControl {
 		if(bean!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", bean);
+			log.info("{}登录系统",name);
 			return JsonFormat.formatJsonBody(200, "ok", bean).toString();
 		}
 		return JsonFormat.formatJsonBody(100, "用户名或密码错误").toString();
@@ -94,9 +95,14 @@ public class UserControl {
 	@RequestMapping(value="loginOut", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
 	public String loginOut(HttpServletRequest request, HttpServletResponse response) {
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();		
+		User user = (User)session.getAttribute("user");
+		if(user != null)
+		{
+			log.info("{}退出系统",user.getLoginName());
+		}
 		session.invalidate();
-		return JsonFormat.formatJsonBody(401, "退出系统").toString();
+		return JsonFormat.formatJsonBody(403, "退出系统").toString();
 	}
 	/**
 	 * 

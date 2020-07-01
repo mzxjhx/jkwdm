@@ -39,6 +39,14 @@ public class RLConfigControl extends BaseControl{
 		if(pageNum == null || pageSize == null) {
 			return JsonFormat.formatList(100, "参数错误", 0, null).toString();
 		}
+//		HttpSession session = request.getSession();		
+//		User user = (User)session.getAttribute("user");
+//		if(user == null) {
+//			return JsonFormat.formatJsonBody(401, "未登录").toString();
+//		}
+//		if(user.getRole() == 2) {
+//			return JsonFormat.formatJsonBody(402, "没有该权限").toString();
+//		}
 		RLConfig bean = new RLConfig();
 		bean.setPageNum(pageNum);
 		bean.setPageSize(pageSize);

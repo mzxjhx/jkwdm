@@ -33,7 +33,7 @@ public class RLConfigServiceImpl implements IRLConfigService{
 		List<RLConfig> list = dao.getList(bean);
 		PageInfo<RLConfig> info = new PageInfo<RLConfig>(list);
 		String msg = JsonFormat.formatList(200, "ok", info.getTotal(), info.getList()).toString();
-		log.info(msg);
+		//log.info(msg);
 		return msg;
 	}
 

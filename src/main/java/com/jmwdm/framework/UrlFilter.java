@@ -32,16 +32,18 @@ public class UrlFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse res, FilterChain chain)
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 				
-		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse)res;
 		//允许跨域
-		response.setHeader("Access-Control-Allow-Origin","*");
-		logger.info("token={}", req.getParameter("token"));
-		logger.info(req.getRequestURI());
-        chain.doFilter(request, res);
+		//response.setHeader("Access-Control-Allow-Origin","*");
+	    response.setHeader("Access-Control-Allow-Credentials","true");
+	    response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+		logger.info("token={}", request.getParameter("token"));
+		logger.info(request.getRequestURI());
+        chain.doFilter(req, res);
 	}
 
 	@Override

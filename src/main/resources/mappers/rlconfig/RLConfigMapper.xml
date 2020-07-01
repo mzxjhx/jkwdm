@@ -12,15 +12,15 @@
     port_c as portC,
     port_p as portP,
     port_r as portR,
-    c_1310 as C1310,
-    c_1490 as C1490,
-    c_1550 as C1550,        
-    p_1310 as P1310,
-    p_1490 as P1490,
-    p_1550 as P1550,           
-    r_1310 as R1310,
-    r_1490 as R1490,
-    r_1550 as R1550,
+    c_1310 as c1310,
+    c_1490 as c1490,
+    c_1550 as c1550,        
+    p_1310 as p1310,
+    p_1490 as p1490,
+    p_1550 as p1550,           
+    r_1310 as r1310,
+    r_1490 as r1490,
+    r_1550 as r1550,
 	DATE_FORMAT(create_time, '%Y-%m-%d %H:%i') createTime
   </sql>
   
@@ -40,6 +40,7 @@
   	<if test="name != null and name != ''">
   		and name=#{name}
   	</if>
+	order by create_time desc
   </select>
    
   <insert id="insert">
@@ -70,9 +71,9 @@
 		#{portC} ,
 		#{portP} ,
 		#{portR} ,
-		#{C1310} ,#{C1490} ,#{C1550},
-		#{P1310} ,#{P1490} ,#{P1550},
-		#{R1310} ,#{R1490} ,#{R1550},			
+		#{c1310} ,#{c1490} ,#{c1550},
+		#{p1310} ,#{p1490} ,#{p1550},
+		#{r1310} ,#{r1490} ,#{r1550},			
 		now()
 	)
   </insert>
@@ -89,15 +90,15 @@
 		port_c=#{portC},
 		port_p=#{portP},
 		port_r=#{portR},
-		c_1310=#{C1310},
-		c_1490=#{C1490},
-		c_1550=#{C1550},
-		p_1310=#{P1310},
-		p_1490=#{P1490},
-		p_1550=#{P1550},
-		r_1310=#{R1310},
-		r_1490=#{R1490},
-		r_1550=#{R1550},			
+		c_1310=#{c1310},
+		c_1490=#{c1490},
+		c_1550=#{c1550},
+		p_1310=#{p1310},
+		p_1490=#{p1490},
+		p_1550=#{p1550},
+		r_1310=#{r1310},
+		r_1490=#{r1490},
+		r_1550=#{r1550},			
 		create_time
     where id = #{id}
   </update>

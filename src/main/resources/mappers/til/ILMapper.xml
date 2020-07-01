@@ -36,7 +36,14 @@
 		</if>
 		<if test="level != null and level != ''">
 			and level = #{level}
-		</if>		
+		</if>	
+		<if test="staff != null and staff != ''">
+			and staff=#{staff}
+		</if>
+	  	<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+	  		and create_time between #{beginTime} and #{endTime}
+	  	</if>		
+	  	order by create_time desc			
 	</select>
 
 </mapper>   
