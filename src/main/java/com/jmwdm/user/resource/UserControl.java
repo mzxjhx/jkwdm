@@ -92,7 +92,7 @@ public class UserControl {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="loginOut", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="loginOut", method=RequestMethod.POST,  produces = "application/json;charset=UTF-8")
 	public String loginOut(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();		
