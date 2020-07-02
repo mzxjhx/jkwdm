@@ -8,14 +8,14 @@
 			serial_number AS serialNumber,
 			primitive_sn AS primitiveSn,
 			batch_number batchNumber,
-			TABLE,
+			il.`table`,
 			DATE_FORMAT(
-				create_time,
+				il.create_time,
 				'%Y-%m-%d %H:%i'
 			)createTime,
 			staff,
-			level,
-			type,
+			il.`level`,
+			il.`type`,
 			wave1,
 			il1,
 			wave2,
@@ -40,10 +40,13 @@
 		<if test="staff != null and staff != ''">
 			and staff=#{staff}
 		</if>
+		<if test="table != null and table != '' ">
+			and `table`=#{table}
+		</if>
 	  	<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
 	  		and create_time between #{beginTime} and #{endTime}
 	  	</if>		
-	  	order by create_time desc			
+	  	order by il.create_time desc			
 	</select>
 
 </mapper>   

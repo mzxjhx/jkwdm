@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jmwdm.framework.BaseControl;
@@ -50,11 +49,9 @@ public class TilControl extends BaseControl{
 	 * @param request
 	 * @param response
 	 */
-	@ResponseBody
 	@RequestMapping(value="exportExcel", method=RequestMethod.GET)
-	public void exportExcel(HttpServletRequest request, 
-			HttpServletResponse response) {
-		Til bean = new Til();
+	public void exportExcel(HttpServletRequest request, HttpServletResponse response,Til bean) {
+			
 		List<Til> list = service.exportExcel(bean);
 		//获取需要转出的excel表头的map字段
         LinkedHashMap<String, String> fieldMap = new LinkedHashMap<>();

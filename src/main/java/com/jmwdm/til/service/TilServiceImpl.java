@@ -35,7 +35,7 @@ public class TilServiceImpl implements ITilService{
 		List<Til> list = dao.getList(bean);
 		PageInfo<Til> info = new PageInfo<Til>(list);
 		String msg = JsonFormat.formatList(200, "ok", info.getTotal(), info.getList()).toString();
-		log.info(msg);
+		//log.info(msg);
 		return msg;
 	}
 
