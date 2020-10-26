@@ -13,7 +13,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * HP
  * 2020年6月22日-下午4:04:46
  * 
-
+ */
 @Configuration
 @PropertySource("classpath:application-db.yml")
 @ConfigurationProperties(prefix = "spring")
@@ -47,9 +47,9 @@ public class JedisConfig {
         //jedisPoolConfig.setBlockWhenExhausted(blockWhenExhausted);
         // 是否启用pool的jmx管理功能, 默认tru
         //jedisPoolConfig.setJmxEnabled(JmxEnabled);
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig,host, port,timeOut,auth);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig,host, port,timeOut);
         System.out.println("JedisPool注入成功...");
         return jedisPool;
     }
 }
- */
+

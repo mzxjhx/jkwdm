@@ -7,7 +7,7 @@ spring:
    active: db  #引入另外一个同路径下yml配置文件，该配置文件必须以application-开头
 
     
-# debug: true
+debug: true
 
 # 配置Mapper地址
 mybatis:

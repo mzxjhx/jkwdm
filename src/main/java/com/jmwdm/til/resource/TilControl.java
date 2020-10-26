@@ -2,6 +2,7 @@ package com.jmwdm.til.resource;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jmwdm.framework.BaseControl;
 import com.jmwdm.framework.Tools.ExportExcelUtils;
 import com.jmwdm.framework.Tools.JsonFormat;
+import com.jmwdm.framework.config.RedisUtil;
 import com.jmwdm.til.bean.Til;
 import com.jmwdm.til.service.ITilService;
 import com.jmwdm.trl.bean.Trl;
@@ -37,9 +39,23 @@ public class TilControl extends BaseControl{
 	@Autowired
 	private ITilService service;
 	
+	//注入redis工具
+	@Autowired
+	private RedisUtil redisUtil;
+
+	
 	@ResponseBody
 	@RequestMapping(value="/getList", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
 	public String getList(HttpServletRequest request, HttpServletResponse response,Til bean) {
+		
+		// 测试redis
+		List<String> list = redisUtil.range("recent:172", 0, -1);
+		for (String i : list) {
+			log.info("redisUtil.range={}", i);
+		}
+		
+		Map<String, String> map = redisUtil.hgetall("jobs");
+		log.info("redisUtil.hgetall age={}", map.get("age"));
 		
 		return service.getList(bean);
 	}

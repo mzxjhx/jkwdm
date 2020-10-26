@@ -30,6 +30,7 @@ public class ILControl extends BaseControl{
 	
 	@Autowired
 	private IILService service;
+
 	
 	@ResponseBody
 	@RequestMapping(value="/getList", method=RequestMethod.GET,  produces = "application/json;charset=UTF-8")
