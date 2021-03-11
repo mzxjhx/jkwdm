@@ -1,6 +1,8 @@
 ## jkwdm
 spring boot接口项目
 
+### 给荆门WDM开发的web版本数据库后台接口，前端使用vue。
+
 ### 遇到的问题
 * 打包部署到tomcat7，报错。原因org.springframework.boot版本选了2.0不匹配，改到1.4版本
 * 扫描不到mapper，在启动类里加@MapperScan({"com.jmwdm.*.dao"})注解
